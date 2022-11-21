@@ -9,7 +9,7 @@ class TaskStatusController extends Controller
 {
     public function index()
     {
-        $taskStatuses = new TaskStatus();
+        $taskStatuses = TaskStatus::paginate(20);
         return view('taskStatus.index', compact('taskStatuses'));
     }
 
@@ -23,7 +23,7 @@ class TaskStatusController extends Controller
     {
         $taskStatuses = TaskStatus::findOrFail($id);
 
-        if (!empty($taskStatuses->tasks)) {
+        if ($taskStatuses->tasks->isNotEmpty()) {
             flash('Не удалось удалить статус')->error();
             return redirect()->route('task_statuses.index');
         } else {        
@@ -31,6 +31,11 @@ class TaskStatusController extends Controller
             flash('Статус успешно удалён');
         }
 
+        return redirect()->route('task_statuses.index');
+    }
+    public function show(string $id)
+    {
+        $this->destroy($id);
         return redirect()->route('task_statuses.index');
     }
 

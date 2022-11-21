@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
-use Exception;
 
 class TaskController extends Controller
 {
@@ -26,12 +25,6 @@ class TaskController extends Controller
                 AllowedFilter::exact('assigned_to_id'),
             ])->get();
         return view('tasks.index', compact('tasks', 'taskStatuses', 'users'));
-    }
-
-    public function show(string $id)
-    {
-        $tasks = Task::findOrFail($id);
-        return view('tasks.show', compact('tasks'));
     }
 
     public function create()
@@ -75,6 +68,25 @@ class TaskController extends Controller
         $task->fill($request->all());
         $task->save();
 
+        return redirect()->route('tasks.index');
+    }
+
+    public function new(string $id)
+    {
+        $tasks = Task::findOrFail($id);
+        return view('tasks.show', compact('tasks'));
+    }
+
+    public function show(string $id)
+    {
+        $this->destroy($id);
+        return redirect()->route('tasks.index');
+    }
+    public function destroy(string $id)
+    {
+        $task = Task::findOrFail($id);
+        $task->delete();
+        flash('Задача успешно удалена')->success();
         return redirect()->route('tasks.index');
     }
 }

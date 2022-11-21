@@ -70,7 +70,7 @@
       <tr>
         <td>{{ $task->id }}</td>
         <td>{{ $task->status->name }}</td>
-        <td><a href="{{ route('tasks.show', $task->id) }}">{{ $task->name }}</a></td>
+        <td><a href="{{ route('tasks.new', $task->id) }}">{{ $task->name }}</a></td>
         <td>{{ $task->author->name }}</td>
         <td>{{ $task->assigned_to_id ? $users->find($task->assigned_to_id)->name : 'Исполнитель не определен' }}
         </td>
@@ -78,6 +78,9 @@
         @auth
         <td>
           <a class="text-decoration-none" href="{{ route('tasks.edit', $task->id) }}">Изменить </a>
+          @can('destroy', $task)
+          <a class="text-danger btn btn-sm fs-6" href="{{ route('tasks.destroy', $task->id) }}" >Удалить</a>
+          @endcan
         </td>
         @endauth
       </tr>

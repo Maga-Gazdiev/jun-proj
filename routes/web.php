@@ -27,4 +27,5 @@ Route::resources([
     'task_statuses' => 'App\Http\Controllers\TaskStatusController',
     'tasks' => 'App\Http\Controllers\TaskController',
     'labels' => 'App\Http\Controllers\LabelController',
+    'policies' => 'App\Policies\TaskPolicy',
 ]);

@@ -17,17 +17,9 @@ class LabelController extends Controller
         return view('labels.index', compact('labels'));
     }
 
-    public function destroy(string $id)
+    public function show(string $id)
     {
-        $labels = Label::findOrFail($id);
-
-        if (!empty($labels)) {
-            flash('Не удалось удалить метку')->error();
-            return redirect()->route('labels.index');
-        } else {      
-            $labels->delete();
-            flash('Метка успешно удалена')->success();
-        }
+        $this->destroy($id);
         return redirect()->route('labels.index');
     }
 
@@ -56,6 +48,15 @@ class LabelController extends Controller
 
         $labels->fill($request->all());
         $labels->save();
+        return redirect()->route('labels.index');
+    }
+
+    public function destroy(string $id)
+    {
+        $labels = Label::findOrFail($id);
+        $labels->delete();
+        flash('Метка успешно удалена')->success();
+
         return redirect()->route('labels.index');
     }
 }

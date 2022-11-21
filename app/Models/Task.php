@@ -43,8 +43,17 @@ class Task extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
+ 
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by_id');
+    }
+    public function assignedTo()
+    {
+        return $this->belongsTo(User::class, 'assigned_to_id');
+    }
     public function labels()
     {
-        return $this->belongsToMany(Label::class)->using(LabelTask::class);
+        return $this->belongsToMany(Label::class);
     }
 }

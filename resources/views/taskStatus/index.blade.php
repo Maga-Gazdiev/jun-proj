@@ -2,7 +2,7 @@
 
 @section('content')
 
-<main class="container-lg px-5">
+<div class="container-lg px-5">
   @include('flash::message')
   <div class="mb-5"></div>
   <h1 class="mb-3">Статусы</h1>
@@ -38,5 +38,5 @@
     </tbody>
   </table>
 
-</main>
+</div>
 @endsection
