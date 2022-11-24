@@ -15,8 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Label extends Model
 {
     use HasFactory;
-    use SoftDeletes;
-
     protected $fillable = [
         'name',
         'description'
@@ -29,6 +27,6 @@ class Label extends Model
      */
     public function tasks()
     {
-        return $this->belongsToMany(Task::class, 'status_id');
+        return $this->belongsTo(Task::class, 'status_id');
     }
 }

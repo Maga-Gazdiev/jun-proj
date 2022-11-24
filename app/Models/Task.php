@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Task extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+  
 
     protected $fillable = [
         'name',
@@ -37,23 +37,8 @@ class Task extends Model
     {
         return $this->belongsTo(User::class, 'created_by_id');
     }
-
-    /**
-     * Get collection of labels associated with given task
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
- 
-    public function createdBy()
-    {
-        return $this->belongsTo(User::class, 'created_by_id');
-    }
-    public function assignedTo()
-    {
-        return $this->belongsTo(User::class, 'assigned_to_id');
-    }
     public function labels()
     {
-        return $this->belongsToMany(Label::class);
+        return $this->belongsTo(Label::class);
     }
 }
