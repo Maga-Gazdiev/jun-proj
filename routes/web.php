@@ -23,9 +23,4 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resources([
-    'task_statuses' => 'App\Http\Controllers\TaskStatusController',
-    'tasks' => 'App\Http\Controllers\TaskController',
-    'labels' => 'App\Http\Controllers\LabelController',
-    'policies' => 'App\Policies\TaskPolicy',
-]);
+Route::get('/rand', "App\Http\Controllers\RandomController@generate");

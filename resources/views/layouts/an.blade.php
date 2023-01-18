@@ -15,25 +15,14 @@
 
                     <div class="navbar navbar-expand-md px-4">
                         <a class="navbar-brand flex items-center" href="{{ route('welcome') }}">
-                            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Менеджер задач</span>
+                            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Генератор рандомных чисел</span>
                         </a>
                         <div class="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1">
                             <ul class="flex flex-col font-medium lg:flex-row lg:space-x-8 lg:mt-0 navbar-nav mr-auto">
-                                <li class="nav-item active" style="width: 375px;">
+                                <li class="nav-item active" style="width: 780px;">
                                     <a class="nav-link"></a>
                                 </li>
-                                <li class="nav-item active">
-                                    <a href="{{route('tasks.index')}}" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0 nav-link">
-                                        Задачи </a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a href="{{ route('task_statuses.index') }}" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0 nav-link">
-                                        Статусы </a>
-                                </li>
-                                <li class="nav-item active" style="width: 375px;">
-                                    <a href="{{ route('labels.index') }}" class="block py-2 pl-3 pr-4 text-gray-700 hover:text-blue-700 lg:p-0 nav-link">
-                                        Метки </a>
-                                </li>
+                                
                             </ul>
                         </div>
                         @guest()

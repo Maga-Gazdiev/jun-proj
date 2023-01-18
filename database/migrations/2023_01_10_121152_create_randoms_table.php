@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('labels', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
+        Schema::create('randoms', function (Blueprint $table) {
+            $table->id()->unique();
+            $table->integer("rand");
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('labels');
+        Schema::dropIfExists('randoms');
     }
 };

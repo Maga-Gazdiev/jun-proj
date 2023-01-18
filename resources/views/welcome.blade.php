@@ -8,14 +8,19 @@
         <section class="bg-white dark:bg-gray-900">
             <div class="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-28">
                 <div class="mr-auto place-self-center lg:col-span-7">
-                    <h1 class="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Привет от Хекслета! </h1>
-                    <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
-                        Это простой менеджер задач на Laravel
-                    </p>
                     <div class="space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
-                        <a href="https://github.com/Maga-Gazdiev/php-project-57">
-                            <button type="button" class="btn btn-outline-dark">Нажми меня</button>
-                        </a>
+                        <form method="GET" action="{{ route('rand.generate') }}" accept-charset="UTF-8">
+                            <div class="form-group mb-2">
+                                <label class="sr-only">
+                                    <h3>Рандомное число</h3>
+                                </label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                    <option>{{ $rand }}</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Нажать</button>
+                        </form>
                     </div>
                 </div>
         </section>
